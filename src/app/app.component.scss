@@ -1,0 +1,39 @@
+nb-layout-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .game-wrapper {
+    text-align: center;
+
+    h4 {
+      margin: 0;
+    }
+
+    .field {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-template-rows: 100px 100px 100px;
+      grid-gap: 0.5rem;
+      margin: 1.5rem auto;
+      max-width: 600px;
+
+      &.game-over app-field-cell:not(.win-cell) {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    }
+
+    @media screen and (min-width: 600px) {
+      .field {
+        grid-template-rows: 150px 150px 150px;
+        grid-gap: 1rem;
+      }
+    }
+  }
+}
+
+nb-layout-footer a.github-link {
+  color: #fff !important;
+  margin-left: 0.25rem;
+}

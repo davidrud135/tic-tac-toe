@@ -1,13 +1,45 @@
 <nb-layout>
-  <nb-layout-header fixed>
-    <!-- Insert header here -->
-  </nb-layout-header>
-
   <nb-layout-column>
-    <router-outlet></router-outlet>
+    <main class="game-wrapper">
+      <h4 *ngIf="!isGameOver" class="curr-player">
+        Current Player: {{ currPlayer }}
+      </h4>
+
+      <h4 *ngIf="winner">The winner is {{ winner }}!</h4>
+      <h4 *ngIf="isDraw">It is a DRAW!</h4>
+
+      <section class="field" [ngClass]="{ 'game-over': isGameOver }">
+        <app-field-cell
+          *ngFor="let cellValue of cells; let i = index; trackBy: cellTrackByFn"
+          [value]="cellValue"
+          [ngClass]="{ 'win-cell': winCells?.includes(i) }"
+          (click)="makeMove(i)"
+        ></app-field-cell>
+      </section>
+
+      <button
+        nbButton
+        hero
+        status="success"
+        *ngIf="isGameOver"
+        (click)="startGame()"
+      >
+        Start New Game
+      </button>
+    </main>
   </nb-layout-column>
 
-  <nb-layout-footer fixed>
-    <!-- Insert footer here -->
+  <nb-layout-footer>
+    <span>TicTacToe</span>
+    <a
+      href="https://github.com/davidrud135/tic-tac-toe"
+      target="_blank"
+      class="github-link"
+    >
+      <nb-icon
+        icon="github"
+        [options]="{ animation: { type: 'pulse' } }"
+      ></nb-icon>
+    </a>
   </nb-layout-footer>
 </nb-layout>
