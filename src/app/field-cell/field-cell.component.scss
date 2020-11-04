@@ -1,0 +1,28 @@
+button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  transition: box-shadow 0.25s;
+  cursor: pointer;
+
+  nb-icon {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 95%;
+  }
+
+  &.circle nb-icon {
+    width: 70%;
+    height: 70%;
+  }
+
+  @media screen and (min-width: 600px) {
+    &:hover {
+      box-shadow: 0 0 5px 5px magenta;
+    }
+  }
+}
